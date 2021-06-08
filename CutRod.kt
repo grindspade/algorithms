@@ -83,26 +83,35 @@ fun cutRodBottomUpFullSolution(p: List<Int>, n: Int): Pair<List<Int>, List<Int>>
 
 fun printCutRodBottomUpFullSolution(p: List<Int>, n: Int){
     val (r,s) = cutRodBottomUpFullSolution(p, n)
+    println ("r: $r")
+    println ("s: $s")
+
     var size = n
     while (size > 0){
-        print("${s[n]} ")
+        print("${s[size]} ")
         size -= s[size]
     }
+    println("")
 }
 
 fun main(){
 
-    val p = listOf(0, 1, 5, 8, 9)
+    //             0  1  2  3  4  5   6   7   8   9   10 
+    val p = listOf(0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30)
 
-    val n = 4
+    val n = 10
     val q = cutRodBottomUp(p, n)
-
     println("Max price for rod size $n is $q")
-
-
     println("And now present a full solution")
-
     printCutRodBottomUpFullSolution(p, n)
+
+
+    val n1 = 7
+    val q1 = cutRodBottomUp(p, n1)
+    println("Max price for rod size $n1 is $q1")
+    println("And now present a full solution")
+    printCutRodBottomUpFullSolution(p, n1)
+
 
     // println("Max prices [$r]")
     // println("Max first part sizes [$s]")
