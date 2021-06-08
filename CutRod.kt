@@ -56,6 +56,40 @@ fun cutRodBottomUp(p: List<Int>, n: Int): Int{
 }
 
 
+/* 
+ * Above, we had just a value of best price but we don't have sizes of new roads.
+ */
+fun cutRodBottomUpFullSolution(p: List<Int>, n: Int): Pair<List<Int>, List<Int>>{
+    
+    //Do not initialize whole array because we start with one element only
+    val r = MutableList(n+1){0}
+    r[0] = 0
+
+    val s = MutableList(n+1){0}
+
+    for (j in 1..n){
+        var q = Int.MIN_VALUE
+        for (i in 1..j){    
+            val v = p[i] + r[j-i]
+            if (q < v){
+                q = v
+                s[j] = i
+            } 
+        }
+        r[j] = q
+    }
+    return Pair(r,s)
+}
+
+fun printCutRodBottomUpFullSolution(p: List<Int>, n: Int){
+    val (r,s) = cutRodBottomUpFullSolution(p, n)
+    var size = n
+    while (size > 0){
+        print("${s[n]} ")
+        size -= s[size]
+    }
+}
+
 fun main(){
 
     val p = listOf(0, 1, 5, 8, 9)
@@ -64,5 +98,14 @@ fun main(){
     val q = cutRodBottomUp(p, n)
 
     println("Max price for rod size $n is $q")
+
+
+    println("And now present a full solution")
+
+    printCutRodBottomUpFullSolution(p, n)
+
+    // println("Max prices [$r]")
+    // println("Max first part sizes [$s]")
+
 
 }
