@@ -154,11 +154,16 @@ class LifePresenter(val life: Life, val delay: Long){
         const val LIVE_CELL =  "\u2588"
     }
 
+    fun Int.format(digits: Int) = "%.${digits}f"
+
     fun print(){
         println("Generation: ${life.generation}")
         
+        val length = (life.rows - 1).toString().length
+        val format = "%0${length}d"
+
         life.grid.forEachIndexed{ idx, row ->  
-            print("${idx}: ")
+            print("${format.format(idx)}: ")
             row.forEach { cell -> 
                 if (cell != 0) print(LIVE_CELL) else print(EMPTY_CELL)
             }
