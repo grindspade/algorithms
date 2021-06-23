@@ -48,7 +48,7 @@ fun sumRangeOptimazed(i: Int, j: Int, sumsCache: List<Int>) = sumsCache[j + 1] -
 
 
 
-fun test(v: Boolean, desc: String = ""){
+private fun test(v: Boolean, desc: String = ""){
 
     if (desc.isNotEmpty()){
         print("$desc - ")
