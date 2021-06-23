@@ -10,7 +10,7 @@ fun smallestRepunitDivByK(K: Int): Int{
     }
 
     var v = 0
-    for (i in 0..K){
+    for (i in 1..K){
         v = (10*v + 1) % K 
         if (v == 0){
             return i
@@ -25,5 +25,7 @@ fun main (){
     if (smallestRepunitDivByK(1) == 1) println("OK") else println("Fail")
     if (smallestRepunitDivByK(2) == -1) println("OK") else println("Fail")
     if (smallestRepunitDivByK(3) == 3) println("OK") else println("Fail")
+    println(smallestRepunitDivByK(7))
     
+
 }
